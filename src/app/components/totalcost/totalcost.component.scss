@@ -1,0 +1,16 @@
+p {
+  margin: 5px 0;
+  color: #333;
+  font-size: 16px;
+}
+
+p:first-of-type {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+p:last-of-type {
+  color: #dc3545;
+  font-size: 20px;
+  font-weight: bold;
+}

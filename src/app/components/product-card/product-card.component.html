@@ -1,0 +1,10 @@
+<div class="card">
+  <img src="{{product.img}}" alt="">
+  <p>{{ product.productname }}</p>
+  <p>{{ product.quantity }}</p>
+  <button [disabled]="!product.quantity" (click)="this.storeService.addtocart(product)">Add to Card
+  </button>
+
+</div>
+
+

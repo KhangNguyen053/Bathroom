@@ -1,53 +1,49 @@
-<h1>Đây là cửa hàng chuyên bán đồ nhà tắm</h1>
+<app-navbar></app-navbar>
 
-<div id="container">
-  <div id="product-container">
-    <div *ngFor="let product of products; let i = index" class="product-card">
-      <img [src]="product.imgURL" alt="{{ product.name }}" class="product-image"/>
-      <h2>{{ product.name }}</h2>
-      <p>{{ product.price | number:'1.0-0' }} VND</p>
-      <p>Còn lại: {{ product.inStock }}</p>
-      <button [disabled]="product.inStock === 0" (click)="addToCart(i)">Thêm vào giỏ</button>
-    </div>
-  </div>
+<div  id="prod-container">
+  @for(prod of this.storeService.products;track $index){
+    <app-product-card [product]="prod"></app-product-card>
+  }
+</div>
+@for(item of this.storeService.cart;track $index){
 
-  <div id="cart-container">
-    <h2>Giỏ hàng</h2>
-    <div *ngFor="let product of cart; let i = index" class="product-in-cart">
-      <p>{{ product.name }}</p>
-      <p>Số lượng: {{ product.quantity }}</p>
-      <p>{{ product.price | number:'1.0-0' }} VND</p>
-      <button (click)="removeFromCart(i)">Xóa</button>
-    </div>
-    <div class="total-price">
-      <h3>Tổng số tiền: {{ totalPrice | number:'1.0-0' }} VND</h3>
-    </div>
-  </div>
+<app-cart [product]="item" ></app-cart>
+}
+<div>
+  <app-totalcost></app-totalcost>
 </div>
 
-<!-- <h1>Đây là cửa hàng chuyên bán đồ vệ sinh</h1>
+<!--<div class="card">-->
+<!--  <h2>{{product.name}}</h2>-->
+<!--  <h3>10000VND</h3>-->
+<!--  <button>Thêm vào giỏ</button>-->
+<!--</div>-->
 
-<div id="container">
+<!--<h1>Đây là cửa hàng chuyên bán đồ nhà tắm</h1>-->
 
-  <div id="product-container">
-    @for (product of products; track $index) {
-    <div id="product-card">
-      <h2>{{ product.imgURL }}</h2>
-      <h2>{{ product.name }}</h2>
-      <h2>{{ product.price }}</h2>
-      <h2>{{ product.inStock }}</h2>
-      <button [disabled]="product.inStock == 0 ? true : false" (click)="addToCart($index)">Thêm vào giỏ</button>
-    </div>
-    }
-  </div>
+<!--<div id="container">-->
+<!--  <div id="product-container">-->
+<!--    <div *ngFor="let product of products; let i = index" class="card">-->
+<!--      <img [src]="product.imgURL" alt="{{ product.name }}" class="product-image"/>-->
+<!--      <h2>{{ product.name }}</h2>-->
+<!--      <p>{{ product.price | number:'1.0-0' }} VND</p>-->
+<!--      <p>Còn lại: {{ product.inStock }}</p>-->
+<!--      <button [disabled]="product.inStock === 0" (click)="addToCart(i)">Thêm vào giỏ</button>-->
+<!--    </div>-->
+<!--  </div>-->
 
-  <div id="cart-container">
-    @for (product of cart; track $index) {
-    <div id="product-in-cart">
-      <p>{{ product.name }}</p>
-      <p>{{ product.quantity }}</p>
-      <p>{{ product.price }}</p>
-    </div>
-    }
-  </div>
-</div> -->
+<!--  <div id="cart-container">-->
+<!--    <h2>Giỏ hàng</h2>-->
+<!--    <div *ngFor="let product of cart; let i = index" class="product-in-cart">-->
+<!--      <p>{{ product.name }}</p>-->
+<!--      <p>Số lượng: {{ product.quantity }}</p>-->
+<!--      <p>{{ product.price | number:'1.0-0' }} VND</p>-->
+<!--      <button (click)="removeFromCart(i)">Xóa</button>-->
+<!--    </div>-->
+<!--    <div class="total-price">-->
+<!--      <h3>Tổng số tiền: {{ totalPrice | number:'1.0-0' }} VND</h3>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+
